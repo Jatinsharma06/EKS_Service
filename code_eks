@@ -1,3 +1,4 @@
+#The Deployment code is used to build for web and mobile app.
 #create cluster
 eksctl create cluster \
 --name my-eks-cluster \
