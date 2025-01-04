@@ -1,0 +1,31 @@
+#create cluster
+eksctl create cluster \
+--name my-eks-cluster \
+--region us-east-1 \
+--nodegroup-name linux-nodes \
+--node-type t3.medium \
+--nodes 2 \
+--nodes-min 1 \
+--nodes-max 3 \
+--managed
+
+#get cluster or check cluster
+eksctl get cluster
+
+#update the cluster
+aws eks update-kubeconfig --region us-east-1 --name my-eks-cluster
+
+#check the nodes:
+kubectl get nodes
+
+#For deployment
+kubectl create deployment hello-world --image=nginx
+
+#Expose it to the public internet or show it publicly:
+kubectl expose deployment hello-world --type=LoadBalancer --port=80
+
+#For checking the Services
+kubectl get services
+
+#For deleting the cluster
+eksctl delete cluster --name my-eks-cluster
